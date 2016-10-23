@@ -1,10 +1,11 @@
 # TelegramEmojiGenerator
 Helps generate better emoji assets for the Telegram's Android client.
 
-Very dirty code, but who cares in this case?
-Idea behind:
+### Results are in workfiles/ready/
 
-## Algorithm:
+Very dirty code, but who cares in this case?
+
+## Idea behind:
 1. Get latest EmojiData.java(TMessagesProj/src/main/java/org/telegram/messenger/EmojiData.java)
 1. Add fixEmoji method from TMessagesProj/src/main/java/org/telegram/messenger/Emoji.java
 1. Add my method which outputs the emoji list to an external file, since I couldn't find a reliable way to get codepoints for emoji 4.0 in Java, and also because they are actually not writen down in a really standard way... 
