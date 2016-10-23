@@ -55,8 +55,8 @@ public class Main {
         readFixedNames();
         doTheMap();
         MapToPicMap();
-        //makeImgsTwit();
-        //makeImgsGoog();
+        makeImgsTwit();
+        makeImgsGoog();
         makeImgsEm1();
         System.out.print("Done");
     }
