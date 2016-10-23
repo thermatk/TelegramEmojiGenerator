@@ -10,7 +10,10 @@ import java.util.Map;
 import static com.thermatk.java.tgemoji.EmojiData.fixEmoji;
 
 class Rect{
-    public int left, top, right, bottom;
+    public final int left;
+    public final int top;
+    public final int right;
+    public final int bottom;
     Rect(int left, int top, int right, int bottom) {
         this.left = left;
         this.top = top;
@@ -19,12 +22,12 @@ class Rect{
     }
 }
 class DrawableInfo {
-    public Rect rect;
-    public byte page;
-    public byte page2;
-    public int emojiIndex;
-    public int row;
-    public int col;
+    public final Rect rect;
+    public final byte page;
+    public final byte page2;
+    public final int emojiIndex;
+    public final int row;
+    public final int col;
 
     public DrawableInfo(Rect r, byte p, byte p2, int index, int rw, int cl) {
         rect = r;
@@ -254,7 +257,7 @@ public class Main {
                     }
 
                     if (exists) {
-                        BufferedImage image128 = null;
+                        BufferedImage image128;
                         if (fromFont) {
                             image128 = ImageIO.read(f);
                             image128 = image128.getSubimage(4, 0, 128, 128);
@@ -279,7 +282,7 @@ public class Main {
     public static void readFixedNames() {
 
         BufferedReader br = null;
-        String line = "";
+        String line;
         try {
             br = new BufferedReader(new FileReader(basePath+"convList.txt"));
             while ((line = br.readLine()) != null) {
