@@ -1,7 +1,7 @@
 # TelegramEmojiGenerator
 Code that helps to generate better emoji assets for the Telegram's Android client.
 
-### Results are in workfiles/ready/
+### Result is in workfiles/ready/
 
 Very dirty code, but who cares in this case?
 
