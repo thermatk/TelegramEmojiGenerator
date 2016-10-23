@@ -1,5 +1,5 @@
 # TelegramEmojiGenerator
-Helps generate better emoji assets for the Telegram's Android client.
+Code that helps to generate better emoji assets for the Telegram's Android client.
 
 ### Results are in workfiles/ready/
 
