@@ -309,11 +309,11 @@ public class Main {
         final int splitCount = 4;
 
         final int[][] cols = {
-                {12, 12, 12, 12},
+                {15, 15, 15, 15},
                 {6, 6, 6, 6},
+                {8, 8, 8, 8},
                 {9, 9, 9, 9},
-                {9, 9, 9, 9},
-                {8, 8, 8, 7}
+                {10, 10, 10, 10}
         };
         int emojiFullSize;
         int add = 2;
