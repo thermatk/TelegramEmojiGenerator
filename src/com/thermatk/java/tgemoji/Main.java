@@ -116,13 +116,21 @@ public class Main {
                                 if(f.exists()) {
                                     exists = true;
                                 } else {
-                                    // twemoji fallback
-                                    path = basePath + "inputs/twemoji-2.2.1/2/72x72/" + drEntry.getKey() + ".png";
+                                    // combo fix
+                                    path = path.replace("-fe0f-", "-");
+                                    path = path.replace("-fe0f", "");
                                     f = new File(path);
                                     if(f.exists()) {
                                         exists = true;
-                                    }
+                                    } else {
+                                        // twemoji fallback
+                                        path = basePath + "inputs/twemoji-2.2.1/2/72x72/" + drEntry.getKey() + ".png";
+                                        f = new File(path);
+                                        if(f.exists()) {
+                                            exists = true;
+                                        }
 
+                                    }
                                 }
                             }
 
@@ -134,7 +142,7 @@ public class Main {
                         BufferedImage image64 = resize(image72, 64,64);
                         g.drawImage(image64,drEntry.getValue().rect.left, drEntry.getValue().rect.top, null);
                     } else {
-                        System.out.println("ERROR MISSING: " + drEntry.getKey());
+                        System.out.println("(E1) ERROR MISSING: " + drEntry.getKey());
                     }
                 }
 
@@ -164,12 +172,19 @@ public class Main {
                     if(f.exists()) {
                         exists = true;
                     } else {
-                        // try a quick fe0f fix
-                        path = path.replace("-fe0f-", "-");
-                        path = path.replace("-fe0f", "");
-                        f = new File(path);
+                        // try quick fe0f fixes
+                        String feofPath = path;
+                        feofPath = feofPath.replace("-fe0f.", ".");
+                        f = new File(feofPath);
                         if(f.exists()) {
                             exists = true;
+                        } else {
+                            path = path.replace("-fe0f-", "-");
+                            path = path.replace("-fe0f", "");
+                            f = new File(path);
+                            if(f.exists()) {
+                                exists = true;
+                            }
                         }
                     }
 
@@ -178,7 +193,7 @@ public class Main {
                         BufferedImage image64 = resize(image72, 64,64);
                         g.drawImage(image64,drEntry.getValue().rect.left, drEntry.getValue().rect.top, null);
                     } else {
-                        System.out.println("ERROR MISSING: " + drEntry.getKey());
+                        System.out.println("(TWE) ERROR MISSING: " + drEntry.getKey());
                     }
                 }
 
@@ -268,7 +283,7 @@ public class Main {
                         BufferedImage image64 = resize(image128, 64,64);
                         g.drawImage(image64,drEntry.getValue().rect.left, drEntry.getValue().rect.top, null);
                     } else {
-                        System.out.println("ERROR MISSING: " + drEntry.getKey());
+                        System.out.println("(GOOGLE) ERROR MISSING: " + drEntry.getKey());
                     }
                 }
 
