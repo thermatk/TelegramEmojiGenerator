@@ -59,98 +59,8 @@ public class Main {
         doTheMap();
         MapToPicMap();
         makeImgsTwit();
-        makeImgsGoog();
-        makeImgsEm1();
+        //makeImgsGoog();
         System.out.print("Done");
-    }
-    public static void makeImgsEm1() {
-
-        for (Map.Entry<String, PicInfo> entry: pics.entrySet()) {
-            PicInfo pInfo = entry.getValue();
-            try {
-
-                int w = (pInfo.totalCols + 1) * 66;
-                int h = (pInfo.totalRows + 1) * 66;
-                BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-
-                Graphics g = combined.getGraphics();
-
-                for (Map.Entry<String, DrawableInfo> drEntry: pInfo.drInfMap.entrySet()) {
-                    String path = basePath + "inputs/e1-png/png_64/" + drEntry.getKey() + ".png";
-                    File f = new File(path);
-                    boolean exists = false;
-                    if(f.exists()) {
-                        exists = true;
-                    } else {
-                        // try a quick fe0f fix
-                        path = path.replace("-fe0f-", "-");
-                        path = path.replace("-fe0f", "");
-                        f = new File(path);
-                        if(f.exists()) {
-                            exists = true;
-                        } else {
-                            // they append zeroes, fix
-                            String[] cps = drEntry.getKey().split("-");
-                            String newS = "";
-                            for (int k = 0; k < cps.length; k++) {
-                                String cp = cps[k];
-                                if (k > 0) {
-                                    newS += "-";
-                                }
-
-                                if (cp.length() == 2) {
-                                    newS += "00" + cp;
-                                } else {
-                                    newS += cp;
-                                }
-                            }
-                            path = basePath + "inputs/e1-png/png_64/" + newS + ".png";
-                            f = new File(path);
-                            if (f.exists()) {
-                                exists = true;
-                            } else {
-                                // a quick 200d fix
-                                path = path.replace("-200d-", "-");
-                                path = path.replace("-200d", "");
-                                f = new File(path);
-                                if(f.exists()) {
-                                    exists = true;
-                                } else {
-                                    // combo fix
-                                    path = path.replace("-fe0f-", "-");
-                                    path = path.replace("-fe0f", "");
-                                    f = new File(path);
-                                    if(f.exists()) {
-                                        exists = true;
-                                    } else {
-                                        // twemoji fallback
-                                        path = basePath + "inputs/twemoji-2.2.1/2/72x72/" + drEntry.getKey() + ".png";
-                                        f = new File(path);
-                                        if(f.exists()) {
-                                            exists = true;
-                                        }
-
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-
-                    if (exists) {
-                        BufferedImage image72 = ImageIO.read(f);
-                        BufferedImage image64 = resize(image72, 64,64);
-                        g.drawImage(image64,drEntry.getValue().rect.left, drEntry.getValue().rect.top, null);
-                    } else {
-                        System.out.println("(E1) ERROR MISSING: " + drEntry.getKey());
-                    }
-                }
-
-                ImageIO.write(combined, "PNG", new File(basePath+"ready/imgsEmOne/"+entry.getKey()+".png"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public static void makeImgsTwit() {
@@ -166,7 +76,7 @@ public class Main {
                 Graphics g = combined.getGraphics();
 
                 for (Map.Entry<String, DrawableInfo> drEntry: pInfo.drInfMap.entrySet()) {
-                    String path = basePath + "inputs/twemoji-2.2.1/2/72x72/" + drEntry.getKey() + ".png";
+                    String path = basePath + "inputs/twemoji-2.4/2/72x72/" + drEntry.getKey() + ".png";
                     File f = new File(path);
                     boolean exists = false;
                     if(f.exists()) {
@@ -324,9 +234,9 @@ public class Main {
         final int splitCount = 4;
 
         final int[][] cols = {
-                {15, 15, 15, 15},
+                {16, 16, 16, 16},
                 {6, 6, 6, 6},
-                {8, 8, 8, 8},
+                {9, 9, 9, 9},
                 {9, 9, 9, 9},
                 {10, 10, 10, 10}
         };
