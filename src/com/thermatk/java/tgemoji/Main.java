@@ -70,8 +70,8 @@ public class Main {
             PicInfo pInfo = entry.getValue();
             try {
 
-                int w = (pInfo.totalCols + 1) * 66;
-                int h = (pInfo.totalRows + 1) * 66;
+                int w = (pInfo.totalCols + 1) * 68-2;
+                int h = (pInfo.totalRows + 1) * 68-2;
                 BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
                 Graphics g = combined.getGraphics();
@@ -113,7 +113,7 @@ public class Main {
 
                     if (exists) {
                         BufferedImage image72 = ImageIO.read(f);
-                        BufferedImage image64 = resize(image72, 64,64);
+                        BufferedImage image64 = resize(image72, 66,66);
                         g.drawImage(image64,drEntry.getValue().rect.left, drEntry.getValue().rect.top, null);
                     } else {
                         System.out.println("(TWE) ERROR MISSING: " + drEntry.getKey());
