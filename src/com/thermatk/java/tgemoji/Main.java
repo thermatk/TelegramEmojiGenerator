@@ -58,6 +58,7 @@ public class Main {
         readFixedNames();
         doTheMap();
         MapToPicMap();
+        System.out.print("Make img Twitter");
         makeImgsTwit();
         //makeImgsGoog();
         System.out.print("Done");
@@ -76,7 +77,7 @@ public class Main {
                 Graphics g = combined.getGraphics();
 
                 for (Map.Entry<String, DrawableInfo> drEntry: pInfo.drInfMap.entrySet()) {
-                    String path = basePath + "inputs/twemoji-2.4/2/72x72/" + drEntry.getKey() + ".png";
+                    String path = basePath + "inputs/twemoji-unicode12/2/72x72/" + drEntry.getKey() + ".png";
                     File f = new File(path);
                     boolean exists = false;
                     if(f.exists()) {
