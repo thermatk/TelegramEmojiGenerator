@@ -120,7 +120,7 @@ public class Main {
                     }
                 }
 
-                ImageIO.write(combined, "PNG", new File(basePath+"ready/imgsTwemoji/"+entry.getKey()+".png"));
+                ImageIO.write(combined, "PNG", new File(basePath+"ready/imgsTwemoji/v14_emoji2.0x_"+entry.getKey()+".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -210,7 +210,7 @@ public class Main {
                     }
                 }
 
-                ImageIO.write(combined, "PNG", new File(basePath+"ready/imgsGoogleNoto/"+entry.getKey()+".png"));
+                ImageIO.write(combined, "PNG", new File(basePath+"ready/imgsGoogleNoto/v14_emoji2.0x_"+entry.getKey()+".png"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
