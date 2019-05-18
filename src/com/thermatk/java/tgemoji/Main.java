@@ -90,11 +90,23 @@ public class Main {
                         if(f.exists()) {
                             exists = true;
                         } else {
-                            path = path.replace("-fe0f-", "-");
-                            path = path.replace("-fe0f", "");
-                            f = new File(path);
+                            feofPath = path.replace("-fe0f-", "-");
+                            feofPath = path.replace("-fe0f", "");
+                            f = new File(feofPath);
                             if(f.exists()) {
                                 exists = true;
+                            } else {
+                                path = path.replace("-200d-", "-fe0f-200d-");
+                                f = new File(path);
+                                if(f.exists()) {
+                                    exists = true;
+                                } else {
+                                    path = path.replace("-fe0f.", ".");
+                                    f = new File(path);
+                                    if(f.exists()) {
+                                        exists = true;
+                                    }
+                                }
                             }
                         }
                     }
