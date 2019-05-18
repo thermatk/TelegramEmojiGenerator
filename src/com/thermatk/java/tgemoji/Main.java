@@ -236,14 +236,18 @@ public class Main {
         final int[][] cols = {
                 {16, 16, 16, 16},
                 {6, 6, 6, 6},
-                {9, 9, 9, 9},
-                {9, 9, 9, 9},
-                {10, 10, 10, 10}
+                {5, 5, 5, 5},
+                {7, 7, 7, 7},
+                {5, 5, 5, 5},
+                {7, 7, 7, 7},
+                {8, 8, 8, 8},
+                {8, 8, 8, 8},
         };
+
         int emojiFullSize;
         int add = 2;
 
-        emojiFullSize = 64;
+        emojiFullSize = 66;
 
         for (int j = 0; j < EmojiData.data.length; j++) {
             int count2 = (int) Math.ceil(EmojiData.data[j].length / (float) splitCount);
