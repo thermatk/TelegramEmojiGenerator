@@ -51,7 +51,7 @@ public class Main {
                 DrawableInfo drInfo = entry.getValue();
                 String emojiKey = entry.getKey();
 
-                String path = basePath + "inputs/twemoji-unicode12/2/72x72/" + emojiKey + ".png";
+                String path = basePath + "inputs/twemoji-master13/assets/72x72/" + emojiKey + ".png";
                 File f = new File(path);
                 boolean exists = false;
                 if(f.exists()) {
@@ -88,7 +88,7 @@ public class Main {
                 if (exists) {
                     BufferedImage image72 = ImageIO.read(f);
                     BufferedImage image66 = resize(image72, 66,66);
-                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsTwemoji513/"+drInfo.page + "_" + drInfo.page2+".png"));
+                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsTwemoji73/"+drInfo.page + "_" + drInfo.page2+".png"));
                 } else {
                     System.out.println("(TWE) ERROR MISSING: " +drInfo.page + "_" + drInfo.page2 + "::"+ emojiKey);
                 }
