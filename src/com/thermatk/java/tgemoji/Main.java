@@ -51,7 +51,7 @@ public class Main {
                 DrawableInfo drInfo = entry.getValue();
                 String emojiKey = entry.getKey();
 
-                String path = basePath + "inputs/twemoji-master13/assets/72x72/" + emojiKey + ".png";
+                String path = basePath + "inputs/twemoji-master14/72x72/" + emojiKey + ".png";
                 File f = new File(path);
                 boolean exists = false;
                 if(f.exists()) {
