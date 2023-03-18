@@ -36,11 +36,9 @@ public class Main {
     public static void main(String[] args) {
         readFixedNames();
         doTheMap();
-        System.out.print("Make img Twitter");
-        makeImgsTwit();
-
-        //not used a long time
-        //makeImgsGoog();
+        System.out.print("Make img Noto");
+        //makeImgsTwit();
+        makeImgsGoog2();
         System.out.print("Done");
     }
 
@@ -88,7 +86,7 @@ public class Main {
                 if (exists) {
                     BufferedImage image72 = ImageIO.read(f);
                     BufferedImage image66 = resize(image72, 66,66);
-                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsTwemoji89/"+drInfo.page + "_" + drInfo.page2+".png"));
+                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsTwemoji95/"+drInfo.page + "_" + drInfo.page2+".png"));
                 } else {
                     System.out.println("(TWE) ERROR MISSING: " +drInfo.page + "_" + drInfo.page2 + "::"+ emojiKey);
                 }
@@ -113,7 +111,7 @@ public class Main {
 
                 for (Map.Entry<String, DrawableInfo> drEntry: pInfo.drInfMap.entrySet()) {
                     String pathKey = "emoji_u" + drEntry.getKey().replace("-","_");
-                    String path = basePath + "inputs/noto-emoji-master/png/128/" + pathKey + ".png";
+                    String path = basePath + "inputs/noto-emoji-mar23/72/" + pathKey + ".png";
                     File f = new File(path);
                     boolean exists = false;
                     boolean fromFont = false;
@@ -187,8 +185,73 @@ public class Main {
                 e.printStackTrace();
             }
         }
+    }*/
+
+    public static void makeImgsGoog2() {
+
+        for (Map.Entry<String, DrawableInfo> entry: rects.entrySet()) {
+            try {
+                DrawableInfo drInfo = entry.getValue();
+                String emojiKey = entry.getKey();
+                String pathKey = "emoji_u" + emojiKey.replace("-","_");
+
+                String path = basePath + "inputs/noto-emoji-mar23/72/" + pathKey + ".png";
+                File f = new File(path);
+                boolean exists = false;
+                if(f.exists()) {
+                    exists = true;
+                } else {
+                    // try quick fe0f fixes
+                    String feofPath = path;
+                    feofPath = feofPath.replace("_fe0f_", "_");
+                    feofPath = feofPath.replace("_fe0f", "");
+                    f = new File(feofPath);
+                    if(f.exists()) {
+                        exists = true;
+                    } else {
+                        // they append zeroes, fix
+                        String[] cps = entry.getKey().split("-");
+                        String newS = "";
+                        for (int k=0;k<cps.length;k++) {
+                            String cp = cps[k];
+                            if (k>0) {
+                                newS +="_";
+                            }
+
+                            if (cp.length() == 2) {
+                                newS +="00" + cp;
+                            } else {
+                                newS += cp;
+                            }
+                        }
+                        pathKey = "emoji_u" + newS;
+                        path = basePath + "inputs/noto-emoji-mar23/72/" + pathKey + ".png";
+                        f = new File(path);
+                        if(f.exists()) {
+                            exists = true;
+                        } else {
+                            // Twemoji fallback
+                            path = basePath + "inputs/twemoji-master14/72x72/" + emojiKey + ".png";
+                            f = new File(path);
+                            if(f.exists()) {
+                                exists = true;
+                            }
+                        }
+                    }
+                }
+
+                if (exists) {
+                    BufferedImage image72 = ImageIO.read(f);
+                    BufferedImage image66 = resize(image72, 66,66);
+                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsNoto95/"+drInfo.page + "_" + drInfo.page2+".png"));
+                } else {
+                    System.out.println("(GOOGLE) ERROR MISSING: " +drInfo.page + "_" + drInfo.page2 + "::"+ emojiKey);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
-    */
     public static void readFixedNames() {
 
         BufferedReader br = null;
