@@ -243,7 +243,7 @@ public class Main {
                 if (exists) {
                     BufferedImage image72 = ImageIO.read(f);
                     BufferedImage image66 = resize(image72, 66,66);
-                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsNoto95/"+drInfo.page + "_" + drInfo.page2+".png"));
+                    ImageIO.write(image66, "PNG", new File(basePath+"ready/imgsNoto101/"+drInfo.page + "_" + drInfo.page2+".png"));
                 } else {
                     System.out.println("(GOOGLE) ERROR MISSING: " +drInfo.page + "_" + drInfo.page2 + "::"+ emojiKey);
                 }
